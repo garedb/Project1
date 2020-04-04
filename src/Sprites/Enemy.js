@@ -2,7 +2,7 @@ import "phaser";
  
 export default class Enemy extends Phaser.Physics.Arcade.Sprite {
   constructor (scene, x, y, frame) {
-    super(scene, x, y, 'baddy', 0);
+    super(scene, x, y, 'baddy', 3);
     this.scene = scene;
     this.health = 3;
  
@@ -11,11 +11,11 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     // add player to the scene
     this.scene.add.existing(this);
     // scale player
-    this.setScale(.7);
+    this.setScale(1.2);
  
     // move enemy
     this.timeEvent = this.scene.time.addEvent({
-      delay: 3000,
+      delay: 1000,
       callback: this.move,
       loop: true,
       callbackScope: this

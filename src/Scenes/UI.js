@@ -11,10 +11,10 @@ export default class UIScene extends Phaser.Scene {
  
   create () {
     //create score text
-    this.scoreText = this.add.text(10, 580, `Score: ${this.coinsCollected}`, { fontSize: '32px', fill: '#fff'});
+    this.scoreText = this.add.text(10, 12, `Score: ${this.coinsCollected}`, { fontSize: '32px', fill: '#fff'});
     
     //create health text
-    this.healthText = this.add.text(10, 620, `Health: 3`, { fontSize: '32px', fill: '#fff'});
+    this.healthText = this.add.text(10, 46, `Health: 3`, { fontSize: '32px', fill: '#fff'});
     
     // get a reference to the game scene
     this.gameScene = this.scene.get('Game');

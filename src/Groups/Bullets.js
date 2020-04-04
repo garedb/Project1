@@ -26,7 +26,7 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
       bullet.active = true;
       bullet.visible = true;
       bullet.setPosition(x, y);
-      bullet.setScale(0.3);
+      bullet.setScale(0.1);
 
       switch (direction) {
         case 'up':

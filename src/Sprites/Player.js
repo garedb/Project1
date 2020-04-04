@@ -2,7 +2,7 @@ import "phaser";
  
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
-    super(scene, x, y, 'characters', 0);
+    super(scene, x, y, 'characters', 3);
     this.scene = scene;
     this.health = 3;
     this.hitDelay = false;
@@ -13,7 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // add player to the scene
     this.scene.add.existing(this);
     // scale player
-    this.setScale(.8);
+    this.setScale(1.2);
   }
  
   update (cursors) {
