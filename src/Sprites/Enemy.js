@@ -12,6 +12,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.scene.add.existing(this);
     // scale player
     this.setScale(1.2);
+    this.setSize(18, 18, true);
  
     // move enemy
     this.timeEvent = this.scene.time.addEvent({

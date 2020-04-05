@@ -14,6 +14,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.scene.add.existing(this);
     // scale player
     this.setScale(1.2);
+    this.setSize(16, 16, true);
   }
  
   update (cursors) {

@@ -26,10 +26,13 @@ export default class BootScene extends Phaser.Scene {
 
     // load in our bullet sprite
     this.load.image('bullet', 'assets/images/Fireball.png');
-
+    // Title Scene
+    this.load.image('button1', 'assets/images/blue_button01.png');
+    this.load.image('button2', 'assets/images/blue_button02.png');
+  
   }
  
   create () {
-    this.scene.start('Game', {level: 1, newGame: true, levels: this.levels});
+    this.scene.start('Title');
   }
 };
