@@ -8,7 +8,7 @@ class BootScene extends Phaser.Scene {
       1: 'level1'
     };
     // load in the tilemap
-    this.load.tilemapTiledJSON('level1', './assets/tilemaps/level1.json');
+    this.load.tilemapTiledJSON('level1', './assets/tilemaps/level_1.json');
 
     // load in the tileset spritesheet
     this.load.spritesheet('level1', './assets/images/tiles_dungeon_v1.1.png', { frameWidth: 16, frameHeight: 16 });
