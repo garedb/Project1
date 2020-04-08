@@ -1,4 +1,4 @@
-export default class Bullets extends Phaser.Physics.Arcade.Group {
+class Bullets extends Phaser.Physics.Arcade.Group {
   constructor(world, scene, children) {
     super(world, scene);
     this.scene = scene;

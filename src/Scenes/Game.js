@@ -1,14 +1,14 @@
-import "phaser";
-import Player from '../Sprites/Player';
-import Coins from '../Groups/Coins';
-import Enemies from '../Groups/Enemies';
-import Bullets from '../Groups/Bullets';
- 
-export default class GameScene extends Phaser.Scene {
+// import "phaser";
+// import Player from '../Sprites/Player';
+// import Coins from '../Groups/Coins';
+// import Enemies from '../Groups/Enemies';
+// import Bullets from '../Groups/Bullets';
+
+class GameScene extends Phaser.Scene {
   constructor(key) {
     super(key);
   }
- 
+
   init (data) {
     this._LEVEL = data.level;
     this._LEVELS = data.levels;
@@ -16,22 +16,22 @@ export default class GameScene extends Phaser.Scene {
     this.loadingLevel = false;
     if (this._NEWGAME) this.events.emit('newGame');
   }
- 
+
   create () {
-    
+
     // listen for the resize event
     this.scale.on('resize', this.resize, this);
-    
+
     // listen for player input
     this.cursors = this.input.keyboard.createCursorKeys();
     this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
- 
+
     // create our tilemap
     this.createMap();
-    
+
     // create our player
     this.createPlayer();
-    
+
     // creat coins
     this.coins = this.map.createFromObjects('Coins', 'Coin', { key: 'coin'});
     this.coinsGroup = new Coins(this.physics.world, this, [], this.coins);
@@ -42,14 +42,14 @@ export default class GameScene extends Phaser.Scene {
 
     // creating the bullets
     this.bullets = new Bullets(this.physics.world, this, []);
- 
+
     // add collisions
     this.addCollisions();
- 
+
     // update camera
     this.cameras.main.startFollow(this.player);
   }
- 
+
   update () {
     this.player.update(this.cursors);
 
@@ -57,7 +57,7 @@ export default class GameScene extends Phaser.Scene {
       this.bullets.fireBullet(this.player.x, this.player.y, this.player.direction);
     }
   }
- 
+
   addCollisions() {
     this.physics.add.collider(this.player, this.blockedLayer);
     this.physics.add.collider(this.enemiesGroup, this.blockedLayer);
@@ -66,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collectCoin.bind(this.coinsGroup));
     this.physics.add.overlap(this.bullets, this.enemiesGroup, this.bullets.enemyCollision);
   }
- 
+
   createPlayer() {
     this.map.findObject('Player', (obj) => {
       if (this._NEWGAME && this._LEVEL === 1) {
@@ -78,7 +78,7 @@ export default class GameScene extends Phaser.Scene {
       }
     });
   }
- 
+
   resize (gameSize, baseSize, displaySize, resolution) {
     let width = gameSize.width;
     let height = gameSize.height;
@@ -90,16 +90,16 @@ export default class GameScene extends Phaser.Scene {
       }
       this.cameras.resize(width, height);
   }
- 
+
   createMap () {
     //add background
     this.add.tileSprite(0, 0, 'tiles_dungeon_v1.1')
     // create the tilemap
     this.map = this.make.tilemap({ key: 'level1' });
- 
+
     // add tileset image
     this.tiles = this.map.addTilesetImage('Dungeon', 'level1');
- 
+
     // create our layers
     this.backgroundLayer = this.map.createStaticLayer('Background', this.tiles, 0, 0);
     this.blockedLayer = this.map.createStaticLayer('Blocked', this.tiles, 0, 0);
