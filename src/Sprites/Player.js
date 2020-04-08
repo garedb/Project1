@@ -1,13 +1,11 @@
-import "phaser";
- 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
+class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, 'characters', 3);
     this.scene = scene;
     this.health = 3;
     this.hitDelay = false;
     this.direction = 'up'
- 
+
     // enable physics
     this.scene.physics.world.enable(this);
     // add player to the scene
@@ -16,7 +14,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setScale(1.2);
     this.setSize(16, 16, true);
   }
- 
+
   update (cursors) {
     this.setVelocity(0);
     // check if the up or down key is pressed
